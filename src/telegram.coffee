@@ -181,12 +181,16 @@ class Telegram extends Adapter
 
     # Text event
     if (message.text)
+      reponseText = null
+      if(message.hasOwnProperty('reply_to_message'))
+        reponseText = message.reply_to_message.text
+    
       text = @cleanMessageText message.text, message.chat.id
 
       @robot.logger.debug "Received message: " + message.from.username + " said '" + text + "'"
 
       user = @createUser message.from, message.chat
-      @receive new TextMessage user, text, message.message_id
+      @receive new TextMessage user, text, message.message_id, reponseText
 
     # Join event
     else if message.new_chat_member
