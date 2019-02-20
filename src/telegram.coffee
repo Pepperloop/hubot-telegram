@@ -246,7 +246,7 @@ class Telegram extends Adapter
           self.emit 'error', err
 
       @robot.router.post "/" + @token, (req, res) =>
-        if req.body.message
+        if req.body.message || req.body.callback_query
           self.handleUpdate req.body
 
         res.send 'OK'
