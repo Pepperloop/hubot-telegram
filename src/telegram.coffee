@@ -199,7 +199,7 @@ class Telegram extends Adapter
 
       user = @createUser message.from, message.message.chat
       
-      @api.invoke 'answerCallbackQuery', {callback_query_id: message.id}, (err, result) ->
+      @api.invoke 'answerCallbackQuery', {callback_query_id: message.id, text: 'Received'}, (err, result) ->
         if (err)
           self.emit 'error', err
 
