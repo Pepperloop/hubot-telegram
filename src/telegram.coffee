@@ -245,7 +245,7 @@ class Telegram extends Adapter
         if (err)
           self.emit 'error', err
 
-      @robot.router.post "/" + @token, (req, res) =>
+      @robot.router.post "/webhook/telegram/" + @token, (req, res) =>
         if req.body.message || req.body.callback_query
           self.handleUpdate req.body
 
