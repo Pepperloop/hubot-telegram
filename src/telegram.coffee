@@ -41,7 +41,7 @@ class Telegram extends Adapter
   ###
   cleanMessageText: (text, chat_id) ->
 # If it is a private chat, automatically prepend the bot name if it does not exist already.
-    if (chat_id > 0)
+    if (chat_id !== 0)
 # Strip out the stuff we don't need.
       text = text.replace(/^\//g, '').trim()
 
